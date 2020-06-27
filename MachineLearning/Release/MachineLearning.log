@@ -1,0 +1,16 @@
+﻿빌드 시작: 2017-04-16 오후 10:51:43
+     1>2 노드의 "D:\Visual Studio 2012\Project\C++\MachineLearning\MachineLearning\MachineLearning.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\Library\Include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\MachineLearning.pch" /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt MultiLayerPerceptron.cpp
+         MultiLayerPerceptron.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"D:\Visual Studio 2012\Project\C++\MachineLearning\Release\MachineLearning.lib" Algebra.lib /LIBPATH:"..\Library\Static Library\x86\Debug" /NOLOGO /LTCG Release\Dataset.obj
+         Release\MultiLayerPerceptron.obj
+         Release\stdafx.obj
+         Release\SupportVectorMachine.obj
+         MachineLearning.vcxproj -> D:\Visual Studio 2012\Project\C++\MachineLearning\Release\MachineLearning.lib
+     1>"D:\Visual Studio 2012\Project\C++\MachineLearning\MachineLearning\MachineLearning.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:01.21

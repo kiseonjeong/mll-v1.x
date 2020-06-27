@@ -1,0 +1,34 @@
+﻿빌드 시작: 2020-06-10 오전 1:52:56
+     1>2 노드의 "D:\Project\C++\New\MachineLearning\DeepLearning\DeepLearning.vcxproj" 프로젝트(Rebuild 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\NumericalMethod /I..\Classifier /Z7 /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug-MTd\DeepLearning.pch" /Fo"Debug-MTd\\" /Fd"Debug-MTd\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt /Ylsymbol stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\NumericalMethod /I..\Classifier /Z7 /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug-MTd\DeepLearning.pch" /Fo"Debug-MTd\\" /Fd"Debug-MTd\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt /Ylsymbol ActivationFunction.cpp BatchNormalization.cpp Initializer.cpp MultiLayerPerceptron.cpp NetworkLayer.cpp Optimizer.cpp Dropout.cpp Regularizer.cpp AutoEncoder.cpp
+         ActivationFunction.cpp
+         BatchNormalization.cpp
+         Initializer.cpp
+         MultiLayerPerceptron.cpp
+         NetworkLayer.cpp
+         Optimizer.cpp
+         Dropout.cpp
+         Regularizer.cpp
+         AutoEncoder.cpp
+         코드를 생성하고 있습니다...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"D:\Project\C++\New\MachineLearning\Debug-MTd\DeepLearning.lib" Classifier.lib /LIBPATH:"..\NumericalMethod\x86\Debug-MTd" /LIBPATH:"..\Debug-MTd" /NOLOGO "Debug-MTd\ActivationFunction.obj"
+         "Debug-MTd\BatchNormalization.obj"
+         "Debug-MTd\Initializer.obj"
+         "Debug-MTd\MultiLayerPerceptron.obj"
+         "Debug-MTd\NetworkLayer.obj"
+         "Debug-MTd\Optimizer.obj"
+         "Debug-MTd\Dropout.obj"
+         "Debug-MTd\Regularizer.obj"
+         "Debug-MTd\AutoEncoder.obj"
+         "Debug-MTd\stdafx.obj"
+         Debug-MTd\stdafx.obj을(를) 바꾸고 있습니다.
+         DeepLearning.vcxproj -> D:\Project\C++\New\MachineLearning\Debug-MTd\DeepLearning.lib
+     1>"D:\Project\C++\New\MachineLearning\DeepLearning\DeepLearning.vcxproj" 프로젝트를 빌드했습니다(Rebuild 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:02.01

@@ -1,0 +1,33 @@
+﻿빌드 시작: 2020-06-10 오전 1:54:20
+     1>2 노드의 "D:\Project\C++\New\MachineLearning\DeepLearning\DeepLearning.vcxproj" 프로젝트(Rebuild 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I..\NumericalMethod /I..\Classifier /Z7 /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Release-MT\DeepLearning.pch" /Fo"x64\Release-MT\\" /Fd"x64\Release-MT\vc110.pdb" /Gd /TP /errorReport:prompt /Ylsymbol stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I..\NumericalMethod /I..\Classifier /Z7 /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release-MT\DeepLearning.pch" /Fo"x64\Release-MT\\" /Fd"x64\Release-MT\vc110.pdb" /Gd /TP /errorReport:prompt /Ylsymbol ActivationFunction.cpp BatchNormalization.cpp Initializer.cpp MultiLayerPerceptron.cpp NetworkLayer.cpp Optimizer.cpp Dropout.cpp Regularizer.cpp AutoEncoder.cpp
+         ActivationFunction.cpp
+         BatchNormalization.cpp
+         Initializer.cpp
+         MultiLayerPerceptron.cpp
+         NetworkLayer.cpp
+         Optimizer.cpp
+         Dropout.cpp
+         Regularizer.cpp
+         AutoEncoder.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\Lib.exe /OUT:"D:\Project\C++\New\MachineLearning\x64\Release-MT\DeepLearning.lib" Classifier.lib /LIBPATH:"..\NumericalMethod\x64\Release-MT" /LIBPATH:"..\x64\Release-MT" /NOLOGO /MACHINE:X64 /LTCG "x64\Release-MT\ActivationFunction.obj"
+         "x64\Release-MT\BatchNormalization.obj"
+         "x64\Release-MT\Initializer.obj"
+         "x64\Release-MT\MultiLayerPerceptron.obj"
+         "x64\Release-MT\NetworkLayer.obj"
+         "x64\Release-MT\Optimizer.obj"
+         "x64\Release-MT\Dropout.obj"
+         "x64\Release-MT\Regularizer.obj"
+         "x64\Release-MT\AutoEncoder.obj"
+         "x64\Release-MT\stdafx.obj"
+         x64\Release-MT\stdafx.obj을(를) 바꾸고 있습니다.
+         DeepLearning.vcxproj -> D:\Project\C++\New\MachineLearning\x64\Release-MT\DeepLearning.lib
+     1>"D:\Project\C++\New\MachineLearning\DeepLearning\DeepLearning.vcxproj" 프로젝트를 빌드했습니다(Rebuild 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:01.93

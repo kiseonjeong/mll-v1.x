@@ -1,0 +1,28 @@
+﻿빌드 시작: 2020-06-10 오전 1:52:40
+     1>2 노드의 "D:\Project\C++\New\MachineLearning\MachineLearning\MachineLearning.vcxproj" 프로젝트(Rebuild 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\NumericalMethod /I..\Classifier /I..\DeepLearning /Z7 /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug-MDd\MachineLearning.pch" /Fo"Debug-MDd\\" /Fd"Debug-MDd\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt /Ylsymbol stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\NumericalMethod /I..\Classifier /I..\DeepLearning /Z7 /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug-MDd\MachineLearning.pch" /Fo"Debug-MDd\\" /Fd"Debug-MDd\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt /Ylsymbol AdaptiveBoosting.cpp KNearestNeighbor.cpp LogisticRegression.cpp NaiveBayesian.cpp NormalBayesian.cpp SupportVectorMachine.cpp
+         AdaptiveBoosting.cpp
+         KNearestNeighbor.cpp
+         LogisticRegression.cpp
+         NaiveBayesian.cpp
+         NormalBayesian.cpp
+         SupportVectorMachine.cpp
+         코드를 생성하고 있습니다...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"D:\Project\C++\New\MachineLearning\Debug-MDd\MachineLearning.lib" DeepLearning.lib /LIBPATH:"..\NumericalMethod\x86\Debug-MDd" /LIBPATH:"..\Debug-MDd" /NOLOGO "Debug-MDd\AdaptiveBoosting.obj"
+         "Debug-MDd\KNearestNeighbor.obj"
+         "Debug-MDd\LogisticRegression.obj"
+         "Debug-MDd\NaiveBayesian.obj"
+         "Debug-MDd\NormalBayesian.obj"
+         "Debug-MDd\stdafx.obj"
+         "Debug-MDd\SupportVectorMachine.obj"
+         Debug-MDd\stdafx.obj을(를) 바꾸고 있습니다.
+         MachineLearning.vcxproj -> D:\Project\C++\New\MachineLearning\Debug-MDd\MachineLearning.lib
+     1>"D:\Project\C++\New\MachineLearning\MachineLearning\MachineLearning.vcxproj" 프로젝트를 빌드했습니다(Rebuild 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:02.23
