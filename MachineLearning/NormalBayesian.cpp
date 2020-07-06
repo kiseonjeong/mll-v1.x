@@ -55,6 +55,7 @@ namespace mll
 		vcols = -1;
 
 		// Set the memories
+		prior.release();
 		count.release();
 		mean.release();
 		cov.release();
@@ -83,6 +84,7 @@ namespace mll
 	void normalbayes::clearObject()
 	{
 		// Clear the memories
+		prior.release();
 		count.release();
 		mean.release();
 		cov.release();
