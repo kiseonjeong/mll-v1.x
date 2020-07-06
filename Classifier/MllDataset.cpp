@@ -94,7 +94,7 @@ namespace mll
 	void mlldata::copyObject(const object& obj)
 	{
 		// Do down casting
-		mlldata* _obj = (mlldata*)&obj;
+		const mlldata* _obj = static_cast<const mlldata*>(&obj);
 
 		// Copy the parameters
 		_dimension = _obj->_dimension;

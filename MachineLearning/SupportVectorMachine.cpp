@@ -25,7 +25,7 @@ namespace mll
 	void kernel::copyObject(const object& obj)
 	{
 		// Do down casting
-		kernel* _obj = (kernel*)&obj;
+		const kernel* _obj = static_cast<const kernel*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -165,7 +165,7 @@ namespace mll
 	void polynomial_kernel::copyObject(const object& obj)
 	{
 		// Do down casting
-		polynomial_kernel* _obj = (polynomial_kernel*)&obj;
+		const polynomial_kernel* _obj = static_cast<const polynomial_kernel*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -254,7 +254,7 @@ namespace mll
 	void tanh_kernel::copyObject(const object& obj)
 	{
 		// Do down casting
-		tanh_kernel* _obj = (tanh_kernel*)&obj;
+		const tanh_kernel* _obj = static_cast<const tanh_kernel*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -342,7 +342,7 @@ namespace mll
 	void rbf_kernel::copyObject(const object& obj)
 	{
 		// Do down casting
-		rbf_kernel* _obj = (rbf_kernel*)&obj;
+		const rbf_kernel* _obj = static_cast<const rbf_kernel*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -454,7 +454,7 @@ namespace mll
 	void SVM::copyObject(const object& obj)
 	{
 		// Do down casting
-		SVM* _obj = (SVM*)&obj;
+		const SVM* _obj = static_cast<const SVM*>(&obj);
 
 		// Copy the parameters
 		C = _obj->C;

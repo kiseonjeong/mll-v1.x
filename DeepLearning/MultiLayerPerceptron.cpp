@@ -85,7 +85,7 @@ namespace mll
 	void MLP::copyObject(const object& obj)
 	{
 		// Do down casting
-		MLP* _obj = (MLP*)&obj;
+		const MLP* _obj = static_cast<const MLP*>(&obj);
 
 		// Copy the parameters
 		progInterval = _obj->progInterval;

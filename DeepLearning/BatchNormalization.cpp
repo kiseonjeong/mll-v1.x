@@ -58,7 +58,7 @@ namespace mll
 	void batchnorm::copyObject(const object& obj)
 	{
 		// Do down casting
-		batchnorm* _obj = (batchnorm*)&obj;
+		const batchnorm* _obj = static_cast<const batchnorm*>(&obj);
 
 		// Copy the parameters
 		_act = _obj->_act;

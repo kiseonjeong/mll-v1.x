@@ -33,7 +33,7 @@ namespace mll
 	void optimizer::copyObject(const object& obj)
 	{
 		// Do down casting
-		optimizer* _obj = (optimizer*)&obj;
+		const optimizer* _obj = static_cast<const optimizer*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -219,7 +219,7 @@ namespace mll
 	void momentum::copyObject(const object& obj)
 	{
 		// Do down casting
-		momentum* _obj = (momentum*)&obj;
+		const momentum* _obj = static_cast<const momentum*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -338,7 +338,7 @@ namespace mll
 	void nesterov::copyObject(const object& obj)
 	{
 		// Do down casting
-		nesterov* _obj = (nesterov*)&obj;
+		const nesterov* _obj = static_cast<const nesterov*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -422,7 +422,7 @@ namespace mll
 	void adagrad::copyObject(const object& obj)
 	{
 		// Do down casting
-		adagrad* _obj = (adagrad*)&obj;
+		const adagrad* _obj = static_cast<const adagrad*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -539,7 +539,7 @@ namespace mll
 	void rmsprop::copyObject(const object& obj)
 	{
 		// Do down casting
-		rmsprop* _obj = (rmsprop*)&obj;
+		const rmsprop* _obj = static_cast<const rmsprop*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -626,7 +626,7 @@ namespace mll
 	void adadelta::copyObject(const object& obj)
 	{
 		// Do down casting
-		adadelta* _obj = (adadelta*)&obj;
+		const adadelta* _obj = static_cast<const adadelta*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -786,7 +786,7 @@ namespace mll
 	{
 		// Do down casting
 		optimizer::copyObject(obj);
-		adam* _obj = (adam*)&obj;
+		const adam* _obj = static_cast<const adam*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;

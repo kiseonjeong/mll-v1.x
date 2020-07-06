@@ -71,7 +71,7 @@ namespace mll
 	{
 		// Do down casting
 		MLP::copyObject(obj);
-		autoEncoder* _obj = (autoEncoder*)&obj;
+		const autoEncoder* _obj = static_cast<const autoEncoder*>(&obj);
 
 		// Copy the parameters
 		sparsity = _obj->sparsity;

@@ -29,7 +29,7 @@ namespace mll
 	void measure::copyObject(const object& obj)
 	{
 		// Do down casting
-		measure* _obj = (measure*)&obj;
+		const measure* _obj = static_cast<const measure*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;
@@ -471,7 +471,7 @@ namespace mll
 	void KNN::copyObject(const object& obj)
 	{
 		// Do down casting
-		KNN* _obj = (KNN*)&obj;
+		const KNN* _obj = static_cast<const KNN*>(&obj);
 
 		// Copy the parameters
 		K = _obj->K;

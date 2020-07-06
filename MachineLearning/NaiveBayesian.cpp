@@ -64,7 +64,7 @@ namespace mll
 	void naivebayes::copyObject(const object& obj)
 	{
 		// Do down casting
-		naivebayes* _obj = (naivebayes*)&obj;
+		const naivebayes* _obj = static_cast<const naivebayes*>(&obj);
 
 		// Copy the parameters
 		vrows = _obj->vrows;

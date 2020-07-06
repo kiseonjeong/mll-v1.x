@@ -27,7 +27,7 @@ namespace mll
 		void actfunc::copyObject(const object& obj)
 		{
 			// Do down casting
-			actfunc* _obj = (actfunc*)&obj;
+			const actfunc* _obj = static_cast<const actfunc*>(&obj);
 
 			// Copy the parameters
 			_type = _obj->_type;
@@ -84,7 +84,7 @@ namespace mll
 		void identity::copyObject(const object& obj)
 		{
 			// Do down casting
-			identity* _obj = (identity*)&obj;
+			const identity* _obj = static_cast<const identity*>(&obj);
 
 			// Copy the parameters
 			_type = _obj->_type;

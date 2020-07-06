@@ -17,13 +17,13 @@ void test_ae(string, string);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	// Do test
-// 	test_knn("..\\Dataset\\knn\\datingTestSet.txt", "..\\Dataset\\knn\\datingTestSet2.txt");
-// 	test_naivebayes("..\\Dataset\\bys\\iris_train.txt", "..\\Dataset\\bys\\iris_test.txt");
-// 	test_normalbayes("..\\Dataset\\bys\\iris_train.txt", "..\\Dataset\\bys\\iris_test.txt");
+	test_knn("..\\..\\dataset\\knn\\datingTestSet.txt", "..\\..\\dataset\\knn\\datingTestSet2.txt");
+	test_naivebayes("..\\..\\dataset\\bys\\iris_train.txt", "..\\..\\dataset\\bys\\iris_test.txt");
+	test_normalbayes("..\\..\\dataset\\bys\\iris_train.txt", "..\\..\\dataset\\bys\\iris_test.txt");
 // 	test_svm("..\\Dataset\\svm\\testSetRBF.txt", "..\\Dataset\\svm\\testSetRBF2.txt");
 //	test_adaboost("..\\Dataset\\adaboost\\horseColicTraining2.txt", "..\\Dataset\\adaboost\\horseColicTest2.txt");
 // 	test_logitmodel("..\\Dataset\\lgr\\testSet.txt", "..\\Dataset\\lgr\\testSet.txt");
-	test_mlp("..\\Dataset\\mlp\\iris_train.txt", "..\\Dataset\\mlp\\iris_test.txt");
+//	test_mlp("..\\Dataset\\mlp\\iris_train.txt", "..\\Dataset\\mlp\\iris_test.txt");
 //	test_ae("..\\Dataset\\mlp\\iris_train.txt", "..\\Dataset\\mlp\\iris_test.txt");
 
 	return 0;

@@ -71,7 +71,7 @@ namespace mll
 	void regularizer::copyObject(const object& obj)
 	{
 		// Do down casting
-		regularizer* _obj = (regularizer*)&obj;
+		const regularizer* _obj = static_cast<const regularizer*>(&obj);
 
 		// Copy the parameters
 		_nhids = _obj->_nhids;

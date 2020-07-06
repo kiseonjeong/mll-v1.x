@@ -67,7 +67,7 @@ namespace mll
 	void adaboost::copyObject(const object& obj)
 	{
 		// Do down casting
-		adaboost* _obj = (adaboost*)&obj;
+		const adaboost* _obj = static_cast<const adaboost*>(&obj);
 
 		// Copy the parameters
 		nwc = _obj->nwc;

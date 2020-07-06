@@ -63,7 +63,7 @@ namespace mll
 	void dropout::copyObject(const object& obj)
 	{
 		// Do down casting
-		dropout* _obj = (dropout*)&obj;
+		const dropout* _obj = static_cast<const dropout*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;

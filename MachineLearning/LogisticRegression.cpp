@@ -73,7 +73,7 @@ namespace mll
 	void logitmodel::copyObject(const object& obj)
 	{
 		// Do down casting
-		logitmodel* _obj = (logitmodel*)&obj;
+		const logitmodel* _obj = static_cast<const logitmodel*>(&obj);
 
 		// Copy the parameters
 		maxIter = _obj->maxIter;

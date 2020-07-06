@@ -59,7 +59,7 @@ namespace mll
 	void initializer::copyObject(const object& obj)
 	{
 		// Do down casting
-		initializer* _obj = (initializer*)&obj;
+		const initializer* _obj = static_cast<const initializer*>(&obj);
 
 		// Copy the parameters
 		_mu = _obj->_mu;

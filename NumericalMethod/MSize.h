@@ -26,9 +26,9 @@ namespace nml
 		// Constructors & Destructor
 	public:
 		msize();
-		msize(const int length);
-		msize(const int rows, const int cols);
-		msize(const int rows, const int cols, const int channels);
+		explicit msize(const int length);
+		explicit msize(const int rows, const int cols);
+		explicit msize(const int rows, const int cols, const int channels);
 		~msize();
 
 	};

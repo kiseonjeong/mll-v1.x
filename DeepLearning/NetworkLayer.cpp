@@ -70,7 +70,7 @@ namespace mll
 	void netlayer::copyObject(const object& obj)
 	{
 		// Do down casting
-		netlayer* _obj = (netlayer*)&obj;
+		const netlayer* _obj = static_cast<const netlayer*>(&obj);
 
 		// Copy the parameters
 		_type = _obj->_type;

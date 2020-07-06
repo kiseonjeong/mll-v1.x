@@ -92,7 +92,7 @@ namespace nml
 	template<typename var> void numem<var>::copyObject(const object& obj)
 	{
 		// Do down casting
-		numem<var>* _obj = (numem<var>*)&obj;
+		const numem<var>* _obj = static_cast<const numem<var>*>(&obj);
 
 		// Check the object status
 		if (_obj->empty() == false)
