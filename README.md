@@ -1,2 +1,2 @@
-# MachineLearning-v2.x
-machine learning library version 2.x for C/C++
+# MachineLearning-v1.x
+machine learning library version 1.x for C/C++
