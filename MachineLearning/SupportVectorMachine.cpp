@@ -534,7 +534,7 @@ namespace mll
 		assert(dataset[2].length() == 2);
 
 		// Check the label numbers
-		assert(dataset[2][0] * dataset[2][1] == -1.0);
+		assert(dataset[2](0) * dataset[2](1) == -1.0);
 
 		// Do remapping the dataset using the kernel function
 		remapDataset(dataset[0]);

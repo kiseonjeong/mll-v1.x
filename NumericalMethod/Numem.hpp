@@ -52,13 +52,21 @@ namespace nml
 
 		return *this;
 	}
-
+	/*
 	template<typename var> var& numem<var>::operator[](const int idx) const
 	{
 		// Check the index
 		assert(idx >= 0 && idx < _rows * _cols);
 
 		return _ptr[idx];
+	}
+	*/
+	template<typename var> var* numem<var>::operator[](const int idx) const
+	{
+		// Check the index
+		assert(idx >= 0 && idx < _rows * _cols);
+
+		return &_ptr[idx * _cols];
 	}
 
 	template<typename var> var& numem<var>::operator()(const int idx) const

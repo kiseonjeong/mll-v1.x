@@ -333,21 +333,21 @@ namespace mll
 			if (i == 0)
 			{
 				// Set the input layer
-				net[i] = netlayer(X.cols, nn::identity());
-				net[i].set(NET_LAYER_INPUT);
+				net(i) = netlayer(X.cols, nn::identity());
+				net(i).set(NET_LAYER_INPUT);
 			}
 			else if (i == numlayers - 1)
 			{
 				// Set the output layer
-// 				net[i] = (type == MLP_TRAIN_REGRESSION) ? netlayer(C.length(), nn::identity()) : netlayer(C.length(), nn::softmax());
-				net[i] = (type == MLP_TRAIN_REGRESSION) ? netlayer(C.length(), nn::identity()) : netlayer(C.length(), nn::logsoftmax());
-				net[i].set(NET_LAYER_OUTPUT);
+// 				net(i) = (type == MLP_TRAIN_REGRESSION) ? netlayer(C.length(), nn::identity()) : netlayer(C.length(), nn::softmax());
+				net(i) = (type == MLP_TRAIN_REGRESSION) ? netlayer(C.length(), nn::identity()) : netlayer(C.length(), nn::logsoftmax());
+				net(i).set(NET_LAYER_OUTPUT);
 			}
 			else
 			{
 				// Set the hidden layer
-				net[i] = hl[i - 1];
-				net[i].set(NET_LAYER_HIDDEN);
+				net(i) = hl[i - 1];
+				net(i).set(NET_LAYER_HIDDEN);
 			}
 		}
 
@@ -355,10 +355,10 @@ namespace mll
 		for (int i = 0; i < W.length(); i++)
 		{
 			// Create a matrix memory
-			W[i] = numat::zeros(msize(net[i + 1].node, 1 + net[i].node));
+			W(i) = numat::zeros(msize(net(i + 1).node, 1 + net(i).node));
 
 			// Set the network weight
-			init->generate(net[i + 1].getActFunc().type, W[i]);
+			init->generate(net(i + 1).getActFunc().type, W(i));
 		}
 	}
 
@@ -368,14 +368,14 @@ namespace mll
 		delta = numem<numat>(msize(W.length()));
 		for (int i = 0; i < delta.length(); i++)
 		{
-			delta[i] = numat::zeros(msize(1, net[i + 1].node));
+			delta(i) = numat::zeros(msize(1, net(i + 1).node));
 		}
 
 		// Create a gradient cache
 		grad = numem<numat>(msize(W.length()));
 		for (int i = 0; i < grad.length(); i++)
 		{
-			grad[i] = numat::zeros(msize(W[i].rows, W[i].cols));
+			grad(i) = numat::zeros(msize(W(i).rows, W(i).cols));
 		}
 
 		// Create a cache for the optimizer
@@ -404,9 +404,9 @@ namespace mll
 		// Initialize the gradient matrix
 		for (int i = 0; i < grad.length(); i++)
 		{
-			for (int j = 0; j < grad[i].length(); j++)
+			for (int j = 0; j < grad(i).length(); j++)
 			{
-				grad[i][j] = 0.0;
+				grad(i)(j) = 0.0;
 			}
 		}
 	}
@@ -423,12 +423,12 @@ namespace mll
 			if (tr == true)
 			{
 				// Activate the dropout layer
-				lout[i] = reg->dolayers[i].forward(lout[i]);
+				lout(i) = reg->dolayers[i].forward(lout(i));
 			}
 
 			// Activate the affine layer
 			// from the current layer output to the next node output
-			nout[i + 1] = lout[i] * W[i].T();
+			nout(i + 1) = lout(i) * W(i).T();
 
 			// Check the current layer is output or not
 			if (i != W.length() - 1)
@@ -437,21 +437,21 @@ namespace mll
 				if (tr == true)
 				{
 					// Activate the batch normalization layer
-					nout[i + 1] = reg->bnlayers[i].forward(nout[i + 1]);
+					nout(i + 1) = reg->bnlayers[i].forward(nout(i + 1));
 				}
 				else
 				{
 					// Activate the batch normalization layer
-					nout[i + 1] = reg->bnlayers[i].inference(nout[i + 1]);
+					nout(i + 1) = reg->bnlayers[i].inference(nout(i + 1));
 				}
 
 				// Activatve the current nodes
-				lout[i + 1] = numat::ones(msize(dataset[0].rows, 1)).happend(net[i + 1].activative(nout[i + 1]));
+				lout(i + 1) = numat::ones(msize(dataset[0].rows, 1)).happend(net(i + 1).activative(nout(i + 1)));
 			}
 			else
 			{
 				// Activatve the current nodes
-				lout[i + 1] = net[i + 1].activative(nout[i + 1]);
+				lout(i + 1) = net(i + 1).activative(nout(i + 1));
 			}
 		}
 
@@ -460,14 +460,14 @@ namespace mll
 		if (type == MLP_TRAIN_REGRESSION)
 		{
 			// Calculate the mean squared error
-			cost = calculateMeanSquaredError(lout[lout.length() - 1], target, tr);
+			cost = calculateMeanSquaredError(lout(lout.length() - 1), target, tr);
 		}
 		else
 		{
 			// Calculate the cross entropy error
 // 			cost = calculateCrossEntropyError(lout[lout.length() - 1], target, tr);
-			cost = calculateNegLogLikelihoodError(lout[lout.length() - 1], target, tr);
-			lout[lout.length() - 1] = numat::exp(lout[lout.length() - 1]);
+			cost = calculateNegLogLikelihoodError(lout(lout.length() - 1), target, tr);
+			lout(lout.length() - 1) = numat::exp(lout(lout.length() - 1));
 		}
 
 		return cost;
@@ -476,9 +476,9 @@ namespace mll
 	void MLP::setInoutVectors(const mlldata& dataset, numat& target)
 	{
 		// Set the input vector
-		nout[0] = dataset[0];
-		lout[0] = net[0].activative(nout[0]);
-		lout[0] = numat::ones(msize(dataset[0].rows, 1)).happend(lout[0]);
+		nout(0) = dataset[0];
+		lout(0) = net(0).activative(nout(0));
+		lout(0) = numat::ones(msize(dataset[0].rows, 1)).happend(lout(0));
 
 		// Check the train type
 		if (type == MLP_TRAIN_REGRESSION)
@@ -498,7 +498,7 @@ namespace mll
 				int label = 0;
 				for (int j = 0; j < C.length(); j++)
 				{
-					if (C(j) == dataset[1][i])
+					if (C(j) == dataset[1](i))
 					{
 						label = j;
 						break;
@@ -522,7 +522,7 @@ namespace mll
 			{
 				for (int i = 0; i < W.length(); i++)
 				{
-					panelty += numat::sum(numat::abs(W[i]));
+					panelty += numat::sum(numat::abs(W(i)));
 				}
 
 				return (numat::sum(0.5 * numat::sumr((y - t).mul(y - t))) + reg->lamda * panelty) / y.rows;
@@ -531,7 +531,7 @@ namespace mll
 			{
 				for (int i = 0; i < W.length(); i++)
 				{
-					panelty += numat::sum(W[i].mul(W[i]));
+					panelty += numat::sum(W(i).mul(W(i)));
 				}
 
 				return (numat::sum(0.5 * numat::sumr((y - t).mul(y - t))) + 0.5 * reg->lamda * panelty) / y.rows;
@@ -552,7 +552,7 @@ namespace mll
 			{
 				for (int i = 0; i < W.length(); i++)
 				{
-					panelty += numat::sum(numat::abs(W[i]));
+					panelty += numat::sum(numat::abs(W(i)));
 				}
 
 				return (numat::sum(-numat::sumr(t.mul(numat::log(y)))) + reg->lamda * panelty) / y.rows;
@@ -561,7 +561,7 @@ namespace mll
 			{
 				for (int i = 0; i < W.length(); i++)
 				{
-					panelty += numat::sum(W[i].mul(W[i]));
+					panelty += numat::sum(W(i).mul(W(i)));
 				}
 
 				return (numat::sum(-numat::sumr(t.mul(numat::log(y)))) + 0.5 * reg->lamda * panelty) / y.rows;
@@ -582,7 +582,7 @@ namespace mll
 			{
 				for (int i = 0; i < W.length(); i++)
 				{
-					panelty += numat::sum(numat::abs(W[i]));
+					panelty += numat::sum(numat::abs(W(i)));
 				}
 
 				return (numat::sum(-numat::sumr(t.mul(y))) + reg->lamda * panelty) / y.rows;
@@ -591,7 +591,7 @@ namespace mll
 			{
 				for (int i = 0; i < W.length(); i++)
 				{
-					panelty += numat::sum(W[i].mul(W[i]));
+					panelty += numat::sum(W(i).mul(W(i)));
 				}
 
 				return (numat::sum(-numat::sumr(t.mul(y))) + 0.5 * reg->lamda * panelty) / y.rows;
@@ -610,19 +610,19 @@ namespace mll
 			if (i == W.length() - 1)
 			{
 				// Derivate the output layer
-				delta[i] = lout[i + 1] - target;
+				delta(i) = lout(i + 1) - target;
 			}
 			else
 			{
 				// Derivate the hidden layer
-				delta[i] = (delta[i + 1] * getWeightMatrix(W[i + 1])).mul(net[i + 1].derivative());
+				delta(i) = (delta(i + 1) * getWeightMatrix(W(i + 1))).mul(net(i + 1).derivative());
 
 				// Derivate the batch normalization layer
-				delta[i] = reg->bnlayers[i].backward(delta[i]);
+				delta(i) = reg->bnlayers[i].backward(delta(i));
 			}
 
 			// Calculate the gradients
-			grad[i] = delta[i].T() * lout[i];
+			grad(i) = delta(i).T() * lout(i);
 		}
 	}
 
@@ -659,20 +659,20 @@ namespace mll
 		for (int i = W.length() - 1; i >= 0; i--)
 		{
 			// Set an weight matrix for the update
-			numat L = numat::zeros(msize(W[i].rows, 1)).happend(getWeightMatrix(W[i]));
+			numat L = numat::zeros(msize(W(i).rows, 1)).happend(getWeightMatrix(W(i)));
 
 			// Update the parameter space
 			if (reg->type == REGULARIZE_L1)
 			{
-				W[i] = W[i] - (opt->epsilon * reg->lamda / N * getSignMatrix(L)) + opt->calculate(i, iter, grad[i] / N);
+				W(i) = W(i) - (opt->epsilon * reg->lamda / N * getSignMatrix(L)) + opt->calculate(i, iter, grad(i) / N);
 			}
 			else if (reg->type == REGULARIZE_L2)
 			{
-				W[i] = (1.0 - opt->epsilon * reg->lamda / N) * L + opt->calculate(i, iter, grad[i] / N);
+				W(i) = (1.0 - opt->epsilon * reg->lamda / N) * L + opt->calculate(i, iter, grad(i) / N);
 			}
 			else
 			{
-				W[i] = L + opt->calculate(i, iter, grad[i] / N);
+				W(i) = L + opt->calculate(i, iter, grad(i) / N);
 			}
 		}
 
@@ -721,16 +721,16 @@ namespace mll
 		}
 
 		// Set the input vector
-		nout[0] = x;
-		lout[0] = net[0].activative(nout[0]);
-		lout[0] = numat::ones(msize(1)).happend(lout[0]);
+		nout(0) = x;
+		lout(0) = net(0).activative(nout(0));
+		lout(0) = numat::ones(msize(1)).happend(lout(0));
 
 		// Do forward propagations
 		for (int i = 0; i < W.length(); i++)
 		{
 			// Activate the affine layer
 			// from the current layer output to the next node output
-			nout[i + 1] = lout[i] * W[i].T();
+			nout(i + 1) = lout(i) * W(i).T();
 
 			// Check the current layer is output or not
 			if (i != W.length() - 1)
@@ -739,28 +739,28 @@ namespace mll
 				if (reg->bnlayers.empty() == false)
 				{
 					// Activate the batch normalization layer
-					nout[i + 1] = reg->bnlayers[i].inference(nout[i + 1]);
+					nout(i + 1) = reg->bnlayers[i].inference(nout(i + 1));
 				}
 
 				// Activatve the current nodes
-				lout[i + 1] = numat::ones(msize(1)).happend(net[i + 1].activative(nout[i + 1]));
+				lout(i + 1) = numat::ones(msize(1)).happend(net(i + 1).activative(nout(i + 1)));
 			}
 			else
 			{
 				// Activatve the current nodes
-				lout[i + 1] = net[i + 1].activative(nout[i + 1]);
+				lout(i + 1) = net(i + 1).activative(nout(i + 1));
 			}
 		}
 
 		// Check the train type
 		if (type == MLP_TRAIN_REGRESSION)
 		{
-			return lout[numlayers - 1][0];
+			return lout(numlayers - 1)(0);
 		}
 		else
 		{
 // 			return getArgmax(lout[numlayers - 1]);
-			return getArgmax(numat::exp(lout[numlayers - 1]));
+			return getArgmax(numat::exp(lout(numlayers - 1)));
 		}
 	}
 
@@ -1407,21 +1407,21 @@ namespace mll
 			if (i == 0)
 			{
 				// Set the input layer
-				net[i] = netlayer(inode, nn::identity());
-				net[i].set(NET_LAYER_INPUT);
+				net(i) = netlayer(inode, nn::identity());
+				net(i).set(NET_LAYER_INPUT);
 			}
 			else if (i == net.length() - 1)
 			{
 				// Set the output layer
-// 				net[i] = (type == MLP_TRAIN_REGRESSION) ? netlayer(onode, nn::identity()) : netlayer(onode, nn::softmax());
-				net[i] = (type == MLP_TRAIN_REGRESSION) ? netlayer(onode, nn::identity()) : netlayer(onode, nn::logsoftmax());
-				net[i].set(NET_LAYER_OUTPUT);
+// 				net(i) = (type == MLP_TRAIN_REGRESSION) ? netlayer(onode, nn::identity()) : netlayer(onode, nn::softmax());
+				net(i) = (type == MLP_TRAIN_REGRESSION) ? netlayer(onode, nn::identity()) : netlayer(onode, nn::logsoftmax());
+				net(i).set(NET_LAYER_OUTPUT);
 			}
 			else
 			{
 				// Set the hidden layer
-				net[i] = hl[i - 1];
-				net[i].set(NET_LAYER_HIDDEN);
+				net(i) = hl[i - 1];
+				net(i).set(NET_LAYER_HIDDEN);
 			}
 		}
 
@@ -1430,7 +1430,7 @@ namespace mll
 		for (int i = 0; i < W.length(); i++)
 		{
 			// Initialize the matrix memory
-			W[i] = numat::zeros(msize(net[i + 1].node, 1 + net[i].node));
+			W(i) = numat::zeros(msize(net(i + 1).node, 1 + net(i).node));
 		}
 
 		return 0;
@@ -1487,7 +1487,7 @@ namespace mll
 			if (indexStrs[0] == "Weight")
 			{
 				// Set a value
-				W[atoi(indexStrs[1].c_str())](atoi(indexStrs[2].c_str()), atoi(indexStrs[3].c_str())) = atof(splitStrs[1].c_str());
+				W(atoi(indexStrs[1].c_str()))(atoi(indexStrs[2].c_str()), atoi(indexStrs[3].c_str())) = atof(splitStrs[1].c_str());
 			}
 		}
 		reader.close();
@@ -1620,12 +1620,12 @@ namespace mll
 
 		// Save layer information
 		writer << getSectionName("MLP_LAYER_INFO", prefix) << endl;
-		writer << "Input_Neurons=" << net[0].node << endl;
-		writer << "Output_Neurons=" << net[net.length() - 1].node << endl;
+		writer << "Input_Neurons=" << net(0).node << endl;
+		writer << "Output_Neurons=" << net(net.length() - 1).node << endl;
 		writer << "Num_Hidden_Layers=" << net.length() - 2 << endl;
 		for (int i = 1; i < net.length() - 1; i++)
 		{
-			writer << "Hidden_Neurons_" << i - 1 << "=" << net[i].node << endl;
+			writer << "Hidden_Neurons_" << i - 1 << "=" << net(i).node << endl;
 		}
 		writer << endl;
 
@@ -1638,11 +1638,11 @@ namespace mll
 		}
 		for (int i = 0; i < W.length(); i++)
 		{
-			for (int y = 0; y < W[i].rows; y++)
+			for (int y = 0; y < W(i).rows; y++)
 			{
-				for (int x = 0; x < W[i].cols; x++)
+				for (int x = 0; x < W(i).cols; x++)
 				{
-					writer << "Weight_" << i << "_" << y << "_" << x << "=" << W[i](y, x) << endl;
+					writer << "Weight_" << i << "_" << y << "_" << x << "=" << W(i)(y, x) << endl;
 				}
 			}
 		}

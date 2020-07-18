@@ -17,14 +17,14 @@ void test_ae(string, string);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	// Do test
-	test_knn("..\\..\\dataset\\knn\\datingTestSet.txt", "..\\..\\dataset\\knn\\datingTestSet2.txt");
-	test_naivebayes("..\\..\\dataset\\bys\\iris_train.txt", "..\\..\\dataset\\bys\\iris_test.txt");
-	test_normalbayes("..\\..\\dataset\\bys\\iris_train.txt", "..\\..\\dataset\\bys\\iris_test.txt");
-// 	test_svm("..\\Dataset\\svm\\testSetRBF.txt", "..\\Dataset\\svm\\testSetRBF2.txt");
-//	test_adaboost("..\\Dataset\\adaboost\\horseColicTraining2.txt", "..\\Dataset\\adaboost\\horseColicTest2.txt");
-// 	test_logitmodel("..\\Dataset\\lgr\\testSet.txt", "..\\Dataset\\lgr\\testSet.txt");
-//	test_mlp("..\\Dataset\\mlp\\iris_train.txt", "..\\Dataset\\mlp\\iris_test.txt");
-//	test_ae("..\\Dataset\\mlp\\iris_train.txt", "..\\Dataset\\mlp\\iris_test.txt");
+// 	test_knn("..\\..\\dataset\\knn\\datingTestSet.txt", "..\\..\\dataset\\knn\\datingTestSet2.txt");
+// 	test_naivebayes("..\\..\\dataset\\bys\\iris_train.txt", "..\\..\\dataset\\bys\\iris_test.txt");
+// 	test_normalbayes("..\\..\\dataset\\bys\\iris_train.txt", "..\\..\\dataset\\bys\\iris_test.txt");
+// 	test_svm("..\\..\\dataset\\svm\\testSetRBF.txt", "..\\..\\dataset\\svm\\testSetRBF2.txt");
+// 	test_adaboost("..\\..\\dataset\\adaboost\\horseColicTraining2.txt", "..\\..\\dataset\\adaboost\\horseColicTest2.txt");
+// 	test_logitmodel("..\\..\\dataset\\lgr\\testSet.txt", "..\\..\\dataset\\lgr\\testSet.txt");
+	test_mlp("..\\..\\dataset\\mlp\\iris_train.txt", "..\\..\\dataset\\mlp\\iris_test.txt");
+// 	test_ae("..\\..\\dataset\\mlp\\iris_train.txt", "..\\..\\dataset\\mlp\\iris_test.txt");
 
 	return 0;
 }
@@ -44,7 +44,6 @@ void test_knn(string trainPath, string testPath)
 	KNN knn(K, meas);
 	knn.train(trainset);
 	knn.save("..\\knn_result.ini");
-// 	KNN knn;
 // 	knn.open("..\\knn_result.ini");
 
 	// Get a response on the train dataset
@@ -52,7 +51,7 @@ void test_knn(string trainPath, string testPath)
 	for (int i = 0; i < trainset[0].rows; i++)
 	{
 		double response = knn.predict(trainset[0].row(i));
-		if (response != trainset[1][i])
+		if (response != trainset[1](i))
 		{
 			trainMissed++;
 		}
@@ -63,7 +62,7 @@ void test_knn(string trainPath, string testPath)
 	for (int i = 0; i < testset[0].rows; i++)
 	{
 		double response = knn.predict(testset[0].row(i));
-		if (response != testset[1][i])
+		if (response != testset[1](i))
 		{
 			testMissed++;
 		}
@@ -85,7 +84,6 @@ void test_naivebayes(string trainPath, string testPath)
 	naivebayes nb;
 	nb.train(trainset);
 	nb.save("..\\naive_bayesian_result.ini");
-// 	naivebayes nb;
 // 	nb.open("..\\naive_bayesian_result.ini");
 
 	// Get a response on the train dataset
@@ -93,7 +91,7 @@ void test_naivebayes(string trainPath, string testPath)
 	for (int i = 0; i < trainset[0].rows; i++)
 	{
 		double response = nb.predict(trainset[0].row(i));
-		if (response != trainset[1][i])
+		if (response != trainset[1](i))
 		{
 			trainMissed++;
 		}
@@ -104,7 +102,7 @@ void test_naivebayes(string trainPath, string testPath)
 	for (int i = 0; i < testset[0].rows; i++)
 	{
 		double response = nb.predict(testset[0].row(i));
-		if (response != testset[1][i])
+		if (response != testset[1](i))
 		{
 			testMissed++;
 		}
@@ -126,7 +124,6 @@ void test_normalbayes(string trainPath, string testPath)
 	normalbayes nb;
 	nb.train(trainset);
 	nb.save("..\\normal_bayesian_result.ini");
-// 	normalbayes nb;
 // 	nb.open("..\\normal_bayesian_result.ini");
 
 	// Get a response on the train dataset
@@ -134,7 +131,7 @@ void test_normalbayes(string trainPath, string testPath)
 	for (int i = 0; i < trainset[0].rows; i++)
 	{
 		double response = nb.predict(trainset[0].row(i));
-		if (response != trainset[1][i])
+		if (response != trainset[1](i))
 		{
 			trainMissed++;
 		}
@@ -145,7 +142,7 @@ void test_normalbayes(string trainPath, string testPath)
 	for (int i = 0; i < testset[0].rows; i++)
 	{
 		double response = nb.predict(testset[0].row(i));
-		if (response != testset[1][i])
+		if (response != testset[1](i))
 		{
 			testMissed++;
 		}
@@ -176,7 +173,6 @@ void test_svm(string trainPath, string testPath)
 	SVM svm(C, toler, maxIter, kn);
 	svm.train(trainset);
 	svm.save("..\\svm_result.ini");
-// 	SVM svm;
 // 	svm.open("..\\svm_result.ini");
 
 	// Get a response on the train dataset
@@ -184,7 +180,7 @@ void test_svm(string trainPath, string testPath)
 	for (int i = 0; i < trainset[0].rows; i++)
 	{
 		double response = svm.predict(trainset[0].row(i));
-		if (response != trainset[1][i])
+		if (response != trainset[1](i))
 		{
 			trainMissed++;
 		}
@@ -195,7 +191,7 @@ void test_svm(string trainPath, string testPath)
 	for (int i = 0; i < testset[0].rows; i++)
 	{
 		double response = svm.predict(testset[0].row(i));
-		if (response != testset[1][i])
+		if (response != testset[1](i))
 		{
 			testMissed++;
 		}
@@ -220,7 +216,6 @@ void test_adaboost(string trainPath, string testPath)
 	adaboost abst(nwc);
 	abst.train(trainset);
 	abst.save("..\\abst_result.ini");
-// 	adaboost abst;
 //	abst.open("..\\abst_result.ini");
 
 	// Get a response on the train dataset
@@ -228,7 +223,7 @@ void test_adaboost(string trainPath, string testPath)
 	for (int i = 0; i < trainset[0].rows; i++)
 	{
 		double response = abst.predict(trainset[0].row(i));
-		if (response != trainset[1][i])
+		if (response != trainset[1](i))
 		{
 			trainMissed++;
 		}
@@ -239,7 +234,7 @@ void test_adaboost(string trainPath, string testPath)
 	for (int i = 0; i < testset[0].rows; i++)
 	{
 		double response = abst.predict(testset[0].row(i));
-		if (response != testset[1][i])
+		if (response != testset[1](i))
 		{
 			testMissed++;
 		}
@@ -265,7 +260,6 @@ void test_logitmodel(string trainPath, string testPath)
 	logitmodel lm(maxIter, E);
 	lm.train(trainset);
 	lm.save("..\\logit_model_result.ini");
-// 	logitmodel lm;
 // 	lm.open("..\\logit_model_result.ini");
 
 	// Get a response on the train dataset
@@ -273,7 +267,7 @@ void test_logitmodel(string trainPath, string testPath)
 	for (int i = 0; i < trainset[0].rows; i++)
 	{
 		double response = lm.predict(trainset[0].row(i));
-		if (response != trainset[1][i])
+		if (response != trainset[1](i))
 		{
 			trainMissed++;
 		}
@@ -284,7 +278,7 @@ void test_logitmodel(string trainPath, string testPath)
 	for (int i = 0; i < testset[0].rows; i++)
 	{
 		double response = lm.predict(testset[0].row(i));
-		if (response != testset[1][i])
+		if (response != testset[1](i))
 		{
 			testMissed++;
 		}
@@ -313,7 +307,7 @@ void test_mlp(string trainPath, string testPath)
 		// Set a train condition
 		const int N = 10;
 		const double E = 0.0001;
-		const int maxIter = 5000;
+		const int maxIter = 1000;
 		vector<netlayer> hl;
 		hl.push_back(netlayer(10, nn::sigmoid()));
 		const double mu = 0.0;
@@ -348,7 +342,6 @@ void test_mlp(string trainPath, string testPath)
 		mlp.progInterval = 10;
 		mlp.train(trainset);
 		mlp.save("..\\mlp_result.ini");
-// 		MLP mlp;
 // 		mlp.open("..\\mlp_result.ini");
 
 		// Save a learning curve
@@ -365,7 +358,7 @@ void test_mlp(string trainPath, string testPath)
 		for (int i = 0; i < trainset[0].rows; i++)
 		{
 			double response = mlp.predict(trainset[0].row(i));
-			if (response != trainset[1][i])
+			if (response != trainset[1](i))
 			{
 				trainMissed++;
 			}
@@ -376,7 +369,7 @@ void test_mlp(string trainPath, string testPath)
 		for (int i = 0; i < testset[0].rows; i++)
 		{
 			double response = mlp.predict(testset[0].row(i));
-			if (response != testset[1][i])
+			if (response != testset[1](i))
 			{
 				testMissed++;
 			}
@@ -469,7 +462,6 @@ void test_mlp(string trainPath, string testPath)
 		mlp.progInterval = 10;
 		mlp.train(trainset);
 		mlp.save("..\\mlp_result.ini");
-// 		MLP mlp;
 // 		mlp.open("..\\mlp_result.ini");
 
 		// Save a learning curve
@@ -486,7 +478,7 @@ void test_mlp(string trainPath, string testPath)
 		for (int i = 0; i < trainset[0].rows; i++)
 		{
 			double response = mlp.predict(trainset[0].row(i));
-			trainDelta += sqrt((response - trainset[1][i]) * (response - trainset[1][i]));
+			trainDelta += sqrt((response - trainset[1](i)) * (response - trainset[1](i)));
 		}
 
 		// Get a response on the test dataset
@@ -494,7 +486,7 @@ void test_mlp(string trainPath, string testPath)
 		for (int i = 0; i < testset[0].rows; i++)
 		{
 			double response = mlp.predict(testset[0].row(i));
-			testDelta += sqrt((response - testset[1][i]) * (response - testset[1][i]));
+			testDelta += sqrt((response - testset[1](i)) * (response - testset[1](i)));
 		}
 
 		// Release the initializer and the optimizer
@@ -558,8 +550,7 @@ void test_ae(string trainPath, string testPath)
 	ae.progInterval = 10;
 	ae.train(trainset);
 	ae.save("..\\ae_result.ini");
-// 	autoEncoder ae;
-//	ae.open("..\\ae_result.ini");
+// 	ae.open("..\\ae_result.ini");
 
 	// Save a learning curve
 	FILE* writer;

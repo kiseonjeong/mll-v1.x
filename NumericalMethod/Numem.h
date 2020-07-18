@@ -35,7 +35,8 @@ namespace nml
 		// Operators
 	public:
 		numem& operator=(const numem& obj);
-		var& operator[](const int idx) const;
+// 		var& operator[](const int idx) const;
+		var* operator[](const int idx) const;
 		var& operator()(const int idx) const;
 		var& operator()(int ridx, int cidx) const;
 

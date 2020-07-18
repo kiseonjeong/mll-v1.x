@@ -102,7 +102,7 @@ namespace mll
 		assert(dataset[2].length() == 2);
 
 		// Check the label numbers
-		assert(dataset[2][0] * dataset[2][1] == -1.0);
+		assert(dataset[2](0) * dataset[2](1) == -1.0);
 
 		// Backup the dataset and initialize a weight matrix
 		numat X = dataset[0];
